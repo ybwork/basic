@@ -1,0 +1,29 @@
+Развёртывание
+
+    - поставили python
+
+    - поставили pip
+
+    - поставили virtualenv
+
+    - проверили наличие virtualenv в директории с проектом
+
+    - поставили virtualenvwrapper
+
+    - содали virtualenv в директории с проектом (команда virtualenv nameenv)
+
+    - зашли в директорию проекта и запускаем env (команда folder_with_project\Scripts\activate)
+
+    - рядом с виртуальном окружением создаём проект на django (pip install django)
+
+    - создаём проект django-admin startproject mysite
+
+    - устанавливаем psycopg2 для работы postgres
+
+    - переходим в папку с проектом и запускаем сервер (python manage.py runserver)
+
+Cоздание приложения (кусок функциональности)
+
+    - должны находиться в директории с manage.py
+
+    - выполняем python manage.py startapp polls

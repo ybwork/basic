@@ -24,7 +24,7 @@
 
     ООП.
 
-    Cokkie.
+    Cookie.
 
     Сессии.
 
@@ -37,20 +37,6 @@
     История MySQL.
 
     История PostgreSQL.
-
-    Стандартные виды sql запросов.
-
-    Оптимизация запросов.
-
-    -----------------------
-
-    PHP и его тонкости.
-
-    Python 3 и его тонкости.
-
-	Книга алгориты и структуры данных.
-
-	Заготовки на аутентификацию, ajax, crud.
 
 Веб в целом.
 
@@ -637,21 +623,27 @@ Cookie.
 
     Python поддерживает несколько парадигм программирования, в том числе структурное, объектно-ориентированное, функциональное, императивное и аспектно-ориентированное.
 
-Стандартные виды sql запросов.
+История MySQL.
+    
+    Реляционная система управления базами данных.
 
-    INSERT INTO users (name, age) VALUES (Ilya, 26), (Oleg, 27)
+    Создана в 1995 году компанией MySQL AB.
 
-    INSERT INTO users SELECT name FROM buyers WHERE city = London
+    Гибкость СУБД MySQL обеспечивается поддержкой большого количества типов таблиц: пользователи могут выбрать как таблицы типа MyISAM, поддерживающие полнотекстовый поиск, так и таблицы InnoDB, поддерживающие транзакции на уровне отдельных записей.
 
-    INSERT INTO people SELECT name FROM users WHERE num = ANY (SELECT num FROM customers WHERE city = San Jose)
+    Типы таблиц: MyISAM, InnoDB, Memory, Archive, Blackhole, Falcon.
 
-    DELETE FROM users WHERE id = :id
+История PostgreSQL.
 
-    DELETE FROM customers WHERE num = ANY (SELECT num FROM selespeople WHERE city = London)
+    Объектно-реляционная система управления базами данных.
 
-    UPDATE users SET name = :name WHERE id = :id
+    Создана в 1995 году сообществом PostgreSQL.
 
-    UPDATE users SET name = Oleg, city = Taganrog, age = 27
+    Сильными сторонами PostgreSQL считаются: высокопроизводительные и надёжные механизмы транзакций и репликации, наследование.
+
+
+
+
 
 
 

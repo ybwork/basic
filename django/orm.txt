@@ -1,0 +1,9 @@
+Обновление поля во всех записях
+
+    Entry.objects.filter(pub_date__year=2007).update(headline='Everything is the same')
+
+Взяли все книги автора
+
+    typical_floors = typical_floor_model.manager.values('number')
+                                                    .annotate(test=ArrayAgg('floor__number', distinct=True))
+                                                    .filter(house_hash_id=request.GET['house_id'])

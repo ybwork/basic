@@ -1,0 +1,48 @@
+- virtualenv nameenv
+
+- folder_with_project\Scripts\activate
+
+- pip install django
+
+- django-admin startproject projectname
+
+- pip install psycopg2 (для работы postgresql в django)
+
+- cd projectname -> python manage.py runserver
+
+
+- python manage.py test polls
+
+- python manage.py createsuperuser
+
+- python manage.py runserver 172.100.2.15:8000
+
+- python manage.py startapp nameapp (создание приложения)
+
+- python manage.py makemigrations (вы говорите Django, что внесли некоторые изменения в ваши модели)
+
+- python manage.py migrate (выполняет миграции и автоматически обновляет базу данных)
+
+- python manage.py migrate name_app zero (откат миграций)
+
+
+- pip freeze > requirements.txt
+
+- venv\Scripts\activate -> pip install -r requirements.txt
+
+
+Django rest framework.
+    
+    - virtualenv nameenv
+
+    - folder_with_project\Scripts\activate
+
+    - pip install django
+
+    - django-admin startproject projectname
+
+    - pip install djangorestframework
+
+    - pip install markdown
+
+    - pip install django-filter

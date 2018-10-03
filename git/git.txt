@@ -1,0 +1,43 @@
+﻿- git remote - показывает все подключённые удалённые репозитории
+
+- git remote -v - показывает все подключённые удалённые репозитории в формате (имя, урл)
+
+- git remote add short_name https://github.com/yetbetter/django-don.git - привязывает ссылку на репозиторий к короткому имени
+
+- git clone https://github.com/yetbetter - взяли данные с репозитория
+
+- git fetch name_repo - забирает, но не сливает и не модифицирует данные
+
+- git pull name_repo - забирает и мержит
+
+- git branch name_branch - создать ветку
+
+- git checkout name_branch - переключиться на ветку
+
+- git branch - посмотреть на какой ветке и какие ветки есть
+
+- git branch -d name_branch - удалить ветку
+
+- git branch -D name_branch - жестко удалить ветку
+
+- git checkout master, git merge name_branch - переключились и слили
+
+- git log, git checkout 343434dfdfdf8343434dfdfdf (название коммита) - переключились на выбранный коммит
+
+- Если после слияния конфликт, то посмотреть в каких файлах можно с помощью - git status и там unmerged: ...; Всё что выше ======= или в head это версия из моей ветки master
+
+- После того как проблемы решены каждый файл нужно прогнать через git add
+
+- q - выход из git log
+
+- Если кто из участников проекта сделал push и после этого кто то другой делает push, он не пройдёт. Чтобы это исправить человеку, который делает push вторым нужно сначала сделать pull, commit и только потом push
+
+
+Gitignore.
+
+    - type nul > .gitignore (создали файл .gitignore в windows)
+
+    - git rm -r --cached .idea (исключаем папку/файл из репозитория, если она там есть)
+
+    - добавили в файл .gitignore, то что нужно игнорировать (.idea)
+

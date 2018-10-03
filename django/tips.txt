@@ -1,0 +1,166 @@
+- @require_http_methods(['PUT']) - декоратор, который создаёт ограничение на тип запроса
+
+- модули должны быть подключенны в name_app_project/settings.py/INSTALLED_APPS
+
+    'name_app.apps.NameAppConfig' ('auth.apps.AuthConfig')
+
+- Правило Django использовать пустую строку, вместо NULL.
+
+- email = model.CharField(max_length=255, db_index=True)
+
+- правой кнопкой на таблице -> View/Edit Data -> All rows - вставка данных через pgAdmin
+
+- чтобы отключить работу с сессиями нужно в MIDDLEWARE закомментировать MessageMiddleware, SessionMiddleware  и в INSTALLED_APPS закомментировать sessions, messages
+
+- По умолчанию, Django использует алгоритм PBKDF2 с хэшем SHA256, механизм защиты паролей рекомендованный NIST. Этого должно хватить для большинства пользователей: достаточная защита, требующая большой объём вычислительного времени для взлома.
+
+- Чтобы не было конфликтов с встроенной аутентификацией нужно оставить в INSTALLED_APPS 'django.contrib.auth' и если нужно использовать свою, то назвать её например api_auth
+
+- чтобы не было конфликтов django и django rest нужно следующая настройка в файле setting.py
+
+    INSTALLED_APPS = [
+        'rest_framework',
+
+        # 'django.contrib.admin',
+        # 'django.contrib.auth',
+
+        'django.contrib.contenttypes',
+
+        # 'django.contrib.sessions',
+        # 'django.contrib.messages',
+
+        'django.contrib.staticfiles',
+    ]
+
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+
+        # 'django.contrib.sessions.middleware.SessionMiddleware',
+
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+
+        # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+        # 'django.contrib.messages.middleware.MessageMiddleware',
+        # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates')]
+            ,
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    
+                    # 'django.contrib.auth.context_processors.auth',
+                    # 'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
+
+- для того чтобы убрать слэш в конце урла нужно поставить APPEND_SLASH = False
+
+- для внесения новых изменений для миграции нужно заново вызвать команду python manage.py makemigrations name_migration
+
+- для сброса миграций нужно удалить их в папке migrations для каждого проекта (все файлы кроме __init__.py)
+
+- для удаления пакета pip unistall package_name
+
+- для работы нового кода внесённого в models.py нужно выполнить 2 команды: python manage.py makemigrations и python manage.py migrate
+
+- для проверки типа используем isinstance(data, int)
+
+- для преобразования из json в dictionary используем json.load(request)
+
+- для работы валадатора создаём файл validators.py и кладём туда например такой код:
+
+    email_validator = EmailValidator()
+
+    def email():
+        try:
+            email_validator('test@gmail.com')
+        except ValidationError:
+            return 0
+
+        return 1
+
+- для работы с rest маршрутами в django rest framework нужно добавить в settings.py
+
+    REST_FRAMEWORK = {
+        'UNAUTHENTICATED_USER': None,
+    }
+
+
+- создание csrf_token можно найти в django.middleware.csrf
+
+        csrf_secret = _get_new_csrf_string()
+
+        api_key = _salt_cipher_secret(csrf_secret)
+
+- для использования транзакций можно использовать:
+
+    with transaction.atomic():
+
+        User.manager.create(data)
+
+        Company.manager.create(data)
+
+
+    @transaction.atomic
+    def create(request):
+        pass
+
+- чтобы выкинуть исключение 400 Bad request пишем
+
+    raise SuspiciousOperation
+
+- для вызова метода класса нужно создать экзэмпляр этого класса, а потом на его основе вызвать метод класса
+
+    class Helper:
+        def generate_api_key(self):
+            return 'new key'
+
+    helper = Helper()
+    helper.generate_api_key()
+
+
+- ВАЖНО!!!! 
+
+    Не передавать весь request для преобразования из json в нужный для python формат, потому что помимо данных request содержит различные заголвки и другие объекты, которые не стоит изменять
+
+    json.load и json.loads это совершенно разные функции
+
+    Использовать json.loads для правильной сериализации
+
+        json.loads(request.body)
+
+- Сериализация
+
+    Если POST, PUT, DELETE методы, то используем json.loads(request.body)
+
+    Если GET, то к данным можно обратиться через request.GET.get('item_name')
+
+- Загрузка картинок
+
+    image = request.FILES['file']
+    fs.save(image.name, image)
+
+    images = request.FILES.getlist('files[]')
+    for image in images:
+        fs.save(image.name, image)
+
+- Передача условия в запрос
+    
+    def get(**condition):
+        user_model.objects.get(**condition)
+
+    get(api_key=api_key)
+
+    Получаем:
+
+        user_model.objects.get(api_key=api_key)

@@ -1,0 +1,85 @@
+Питон уже есть на убунте.
+
+
+
+python3 -m venv my_env
+
+source my_env/bin/activate
+
+deactivate (деактивация)
+
+rm -rf venv (удаление)
+
+pip install Django=2.0.1
+
+pip install gunicorn
+
+
+-------------------------
+
+insider asdf1234
+
+insider
+
+188.225.39.47:8000
+
+
+
+-----------------
+
+
+Раскатка django на vds.
+
+    Настроили web-сервер. Apache или Nginx.
+
+    Питон уже стоит на ubuntu.
+
+    Проверяем версию. python3 -V
+
+    Установили пакетный менеджер. sudo apt-get install -y python3-pip
+
+    Перешли в корневую директорию (/var/www/www-root/data/www/188.225.39.47/
+
+    Поставили виртуальное окружение. python3 -m venv name_env
+
+    source my_env/bin/activate
+
+    Поставили git
+
+    Стянули проект с github или загрузили архив через ispmanager.
+
+    Поставили зависимости проекта. pip install -r requirements.txt
+
+    Если нет, то поставили uwsgi.
+
+    Активировали виртуальное окружение. source venv/bin/activate
+
+    Проверили работу uwsgi. Перешли в директорию с названием проекта, создали там файл test.py, положили туда функцию следующего содержания:
+
+        def application(env, start_response):
+            start_response('200 OK', [('Content-Type','text/html')])
+            return [b"Hello World"] # python3
+            #return ["Hello World"] # python2
+
+    запустили виртуальное окружение, перешли в директорию, где лежит файл test.py, запустили из этой же директории uwsgi. uwsgi --http :8000 --wsgi-file test.py и перешли по адресу сайта + :8000
+
+    Cбросили работу uwsgi.
+
+    Запустили обычный сервер. python manage.py runserver 0.0.0.0:8080
+
+    Сайт должен быть доступен по ip адресу + порт 8080
+
+    В настройках 
+
+Создание бд postgres через консоль на ubuntu.
+
+    sudo su - postgres
+
+    createuser --interactive -P (вводим имя юзера, пароль, а потом отказываемся на дальнейших шагах, чтобы пользователь мог создавать только одну бд)
+
+    createdb --owner user_name db_name
+
+
+
+
+
