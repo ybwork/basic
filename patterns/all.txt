@@ -1,0 +1,133 @@
+Базовые паттерны.
+
+    Mapper (Распределитель)
+
+    Money (Деньги)
+
+    Special Case (Особый Случай)
+
+    Plugin (Плагин)
+
+    Gateway (Шлюз)
+
+    Separated Interface (Выделенный интерфейс)
+
+    Registry (Реестр)
+
+    Service Stub (Сервисная заглушка)
+
+    Value Object (Объект-значение)
+
+    Record Set
+
+    Layer Supertype (Супертип Уровня)
+
+Порождающие паттерны.
+
+    Abstract factory (Абстрактная фабрика)
+
+    Builder (Строитель)
+
+    Factory method (Фабричный метод)
+
+    Singleton (Одиночка)
+
+Паттерны веб-представления.
+
+    Transform View (Преобразователь)
+
+    Template View (Шаблонизатор)
+
+    Application Controller (Контроллер приложения)
+
+    Two Step View (Двухшаговая шаблонизация)
+
+    Page Controller (Контроллер страницы)
+
+    Front Controller (Контроллер входа / Единая точка входа)
+
+    MVC - Model View Controller (Модель-Вид-Контроллер)
+
+Паттерны архитектуры источников данных.
+
+    Row Data Gateway (Шлюз к данным записи)
+
+    Active Record (Активная запись)
+
+    Table Data Gateway (Шлюз к данным таблицы)
+
+    Data Mapper
+
+Паттерны Объектно-Реляционной логики.
+
+    Lazy Load (Ленивая загрузка)
+
+    Identity Map (Карта присутствия / Карта соответствия)
+
+    Unit of Work (Единица работы)
+
+Паттерны Объектно-Реляционного структурирования.
+
+    Identity Field (Поле первичного ключа)
+
+    Foreign Key Mapping (Разметка внешних ключей)
+
+    Association Table Mapping (Разметка таблиц связей)
+
+    Dependent Mapping (Управление распределением подчинённых сущностей)
+
+    Embedded Value (Объединённое свойство)
+
+    Serialized LOB (Сериализованный LOB)
+
+    Single Table Inheritance (Наследование с единой таблицей)
+
+    Class Table Inheritance (Наследование с таблицами классов)
+
+    Concrete Table Inheritance (Наследование с таблицами конечных классов)
+
+    Inherritance Mappers (Наследуемые распределители)
+
+Паттерны параллельного программирования.
+
+    Reactor (Реактор)
+
+Паттерны логики сущности.
+
+    Transaction Script (Сценнарий транзакции)
+
+    Domain Model (Модель области определения)
+
+    Table Module (Обработчик таблицы)
+
+    Service Layer (Сервисный уровень)
+
+Паттерны обработки Объектно-Реляционных метаданных.
+
+    Metadata Mapping (Распределение на основе метаданных)
+
+    Query Object (Объект-запрос)
+
+    Repository (Репозиторий)
+
+Поведенческие паттерны.
+
+    Observer (Наблюдатель)
+
+    PubSub (Издатель-подписчик)
+
+Паттерны распределения данных.
+
+    Remote Facade (Парадный вход)
+
+    Data Transfer Object (Объект передачи данных)
+
+Паттерны локальной конкуренции.
+
+    Optimistic Offline Lock (Оптимистичная блокировка)
+
+    Pessimistic Offline Lock (Пессимистичная блокировка)
+
+    Coarse Grained Lock (Грубая блокировка)
+
+    Implicit Lock (Скрытая блокировка)
