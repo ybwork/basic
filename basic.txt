@@ -462,6 +462,54 @@ SOLID.
     $user->set_model(new MySQLUserModel());
     $user->create($data);
 
+    /*
+        Принцип единственной ответственности. (Single Responsibility)
+
+        Один класс должен решать только какую-то одну задачу. Он может иметь несколько методов, но они должны использоваться лишь для решения общей задачи. Все методы и свойства должны служить одной цели.
+
+        Неправильный код:
+
+    */
+    // Приведённый здесь класс нарушает принцип единственной ответственности. Почему он должен извлекать данные из базы? Это задача для уровня хранения данных, на котором данные сохраняются и извлекаются из хранилища (например, базы данных). Это ответственность не этого класса.
+    class OrdersReport
+    {
+        public function getOrdersInfo($startDate, $endDate)
+        {
+            $orders = $this->queryDBForOrders($startDate, $endDate);
+            return $this->format($orders);
+        }
+
+        protected function queryDBForOrders($startDate, $endDate)
+        {
+            return DB::table('orders')->whereBetween('created_at', [$startDate, $endDate])->get();
+        }
+
+        protected function format($orders)
+        {   
+            return '<h1>Orders: ' . $orders . '</h1>';
+        }
+    }
+
+    // Правильный код:
+    class OrdersReport
+    {
+        protected $repo;
+        protected $formatter;
+
+        public function __construct(OrdersRepository $repo, OrdersOutPutInterface $formatter)
+        {
+                $this->repo = $repo;
+                $this->formatter = $formatter;
+        }
+
+        public function getOrdersInfo($startDate, $endDate)
+        {
+                $orders = $this->repo->getOrdersWithDate($startDate, $endDate);
+
+                return $this->formatter->output($orders);
+        }
+    }
+
 DRY.
 
     Don’t repeat yourself (не повторяйся).
